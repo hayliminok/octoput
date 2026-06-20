@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Agent context (auto-generated, not worth versioning)
+.glaze_memory/
+
+# App icons (binary, auto-generated)
+app-icon.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Glaze agent temporary files
+tmp/*
+
+# Build + packaging output
+build/
+dist/
+
+# Bundled CLI binaries — build-time artifacts, too large for git
+# (putio is ~122MB, exceeds GitHub's 100MB limit). See resources/bin/README.md.
+resources/bin/*/
+
+# Bundled Jackett (.NET server, ~100MB+) — dropped in at build time
+resources/jackett/*/

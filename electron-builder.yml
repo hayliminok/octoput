@@ -1,0 +1,26 @@
+appId: io.put.octoput
+productName: Octoput
+directories:
+  output: dist
+files:
+  - build/**/*
+  - package.json
+extraResources:
+  - from: resources/bin
+    to: bin
+  - from: resources/jackett
+    to: jackett
+asar: true
+afterPack: scripts/after-pack.cjs
+asarUnpack:
+  - "**/node_modules/@ffmpeg-installer/**"
+  - "**/node_modules/@ffprobe-installer/**"
+mac:
+  icon: assets/icon.icns
+  category: public.app-category.entertainment
+  target:
+    - dmg
+    - zip
+  identity: null
+  hardenedRuntime: false
+  gatekeeperAssess: false
