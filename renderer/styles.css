@@ -19,6 +19,11 @@ body,
   height: 100%;
 }
 
+/* Radix Themes scaling="110%": scale the rem-based UI up 10% from the 16px root. */
+html {
+  font-size: 110%;
+}
+
 /* Base theme colors. Without an explicit color, text fell back to default black,
    which is invisible on the dark background. Applies to both app + settings windows. */
 body {
@@ -29,60 +34,62 @@ body {
 }
 
 /* ── Design tokens ────────────────────────────────────────────────────── */
-/* Radix color scales (gray/blue/red/green, solid + alpha) + shadcn tokens.
-   Accent scale: the `--blue-*` tokens now carry Radix *teal* values — a deep
-   ocean tone that suits the octopus branding. Names kept as `blue` so every
-   semantic token (--primary, --ring) and `blue-*` utility class recolors in one
-   place; swap these values to restyle the whole accent. */
+/* Radix color scales + shadcn tokens. Mirrors a Radix Themes config of
+   accentColor="amber" grayColor="sand" panelBackground="solid" scaling="110%".
+   Accent scale: the `--blue-*` tokens carry Radix *amber* values; the `--gray-*`
+   tokens carry Radix *sand* values. Names kept as `blue`/`gray` so every semantic
+   token (--primary, --ring) and `blue-*`/`gray-*` utility class recolors in one
+   place; swap these values to restyle the whole palette. Amber-9 is light, so
+   --primary-foreground is a dark sand tone for legible text on accent fills. */
 :root {
-    --blue-1: #fafefd;
-    --blue-10: #0d9b8a;
-    --blue-11: #008573;
-    --blue-12: #0d3d38;
-    --blue-2: #f3fbf9;
-    --blue-3: #e0f8f3;
-    --blue-4: #ccf3ea;
-    --blue-5: #b8eae0;
-    --blue-6: #a1ded2;
-    --blue-7: #83cdc1;
-    --blue-8: #53b9ab;
-    --blue-9: #12a594;
-    --blue-a1: #00cc9905;
-    --blue-a10: #009684f2;
-    --blue-a11: #008573;
-    --blue-a12: #00332df2;
-    --blue-a2: #00aa800c;
-    --blue-a3: #00c69d1f;
-    --blue-a4: #00c39633;
-    --blue-a5: #00b49047;
-    --blue-a6: #00a6855e;
-    --blue-a7: #0099807c;
-    --blue-a8: #009783ac;
-    --blue-a9: #009e8ced;
-    --gray-1: #fcfcfc;
-    --gray-10: #838383;
-    --gray-11: #646464;
-    --gray-12: #202020;
-    --gray-2: #f9f9f9;
-    --gray-3: #f0f0f0;
-    --gray-4: #e8e8e8;
-    --gray-5: #e0e0e0;
-    --gray-6: #d9d9d9;
-    --gray-7: #cecece;
-    --gray-8: #bbbbbb;
-    --gray-9: #8d8d8d;
-    --gray-a1: #00000003;
-    --gray-a10: #0000007c;
-    --gray-a11: #0000009b;
-    --gray-a12: #000000df;
-    --gray-a2: #00000006;
-    --gray-a3: #0000000f;
-    --gray-a4: #00000017;
-    --gray-a5: #0000001f;
-    --gray-a6: #00000026;
-    --gray-a7: #00000031;
-    --gray-a8: #00000044;
-    --gray-a9: #00000072;
+    --blue-1: #fefdfb;
+    --blue-10: #ffba18;
+    --blue-11: #ab6400;
+    --blue-12: #4f3422;
+    --blue-2: #fefbe9;
+    --blue-3: #fff7c2;
+    --blue-4: #ffee9c;
+    --blue-5: #fbe577;
+    --blue-6: #f3d673;
+    --blue-7: #e9c162;
+    --blue-8: #e2a336;
+    --blue-9: #ffc53d;
+    --blue-a1: #c0800004;
+    --blue-a10: #ffb300e7;
+    --blue-a11: #ab6400;
+    --blue-a12: #341500dd;
+    --blue-a2: #f4d10016;
+    --blue-a3: #ffde003d;
+    --blue-a4: #ffd40063;
+    --blue-a5: #f8cf0088;
+    --blue-a6: #eab5008c;
+    --blue-a7: #dc9b009d;
+    --blue-a8: #da8a00c9;
+    --blue-a9: #ffb300c2;
+    --gray-1: #fdfdfc;
+    --gray-10: #82827c;
+    --gray-11: #63635e;
+    --gray-12: #21201c;
+    --gray-2: #f9f9f8;
+    --gray-3: #f1f0ef;
+    --gray-4: #e9e8e6;
+    --gray-5: #e2e1de;
+    --gray-6: #dad9d6;
+    --gray-7: #cfceca;
+    --gray-8: #bcbbb5;
+    --gray-9: #8d8d86;
+    --gray-a1: #55550003;
+    --gray-a10: #0c0c0083;
+    --gray-a11: #080800a1;
+    --gray-a12: #060500e3;
+    --gray-a2: #25250007;
+    --gray-a3: #20100010;
+    --gray-a4: #1f150019;
+    --gray-a5: #1f180021;
+    --gray-a6: #19130029;
+    --gray-a7: #19140035;
+    --gray-a8: #1915014a;
+    --gray-a9: #0f0f0079;
     --green-1: #fbfefc;
     --green-10: #2b9a66;
     --green-11: #218358;
@@ -139,7 +146,7 @@ body {
   --popover: #ffffff;
   --popover-foreground: var(--gray-12);
   --primary: var(--blue-9);
-  --primary-foreground: #ffffff;
+  --primary-foreground: #21201c;
   --secondary: var(--gray-3);
   --secondary-foreground: var(--gray-12);
   --muted: var(--gray-2);
@@ -155,54 +162,54 @@ body {
 }
 
 .dark {
-    --blue-1: #0d1514;
-    --blue-10: #0eb39e;
-    --blue-11: #0bd8b6;
-    --blue-12: #adf0dd;
-    --blue-2: #111c1b;
-    --blue-3: #0d2d2a;
-    --blue-4: #023b37;
-    --blue-5: #084843;
-    --blue-6: #145750;
-    --blue-7: #1c6961;
-    --blue-8: #207e73;
-    --blue-9: #12a594;
-    --blue-a1: #00deab05;
-    --blue-a10: #0dffe0ae;
-    --blue-a11: #0afed5d6;
-    --blue-a12: #b8ffebef;
-    --blue-a2: #12fbe60c;
-    --blue-a3: #00ffe61e;
-    --blue-a4: #00ffe92d;
-    --blue-a5: #00ffea3b;
-    --blue-a6: #1cffe84b;
-    --blue-a7: #2efde85f;
-    --blue-a8: #32ffe775;
-    --blue-a9: #13ffe49f;
-    --gray-1: #111111;
-    --gray-10: #7b7b7b;
-    --gray-11: #b4b4b4;
-    --gray-12: #eeeeee;
-    --gray-2: #191919;
-    --gray-3: #222222;
-    --gray-4: #2a2a2a;
-    --gray-5: #313131;
-    --gray-6: #3a3a3a;
-    --gray-7: #484848;
-    --gray-8: #606060;
-    --gray-9: #6e6e6e;
+    --blue-1: #16120c;
+    --blue-10: #ffd60a;
+    --blue-11: #ffca16;
+    --blue-12: #ffe7b3;
+    --blue-2: #1d180f;
+    --blue-3: #302008;
+    --blue-4: #3f2700;
+    --blue-5: #4d3000;
+    --blue-6: #5c3d05;
+    --blue-7: #714f19;
+    --blue-8: #8f6424;
+    --blue-9: #ffc53d;
+    --blue-a1: #e63c0006;
+    --blue-a10: #ffd60a;
+    --blue-a11: #ffca16;
+    --blue-a12: #ffe7b3;
+    --blue-a2: #fd9b000d;
+    --blue-a3: #fa820022;
+    --blue-a4: #fc820032;
+    --blue-a5: #fd8b0041;
+    --blue-a6: #fd9b0051;
+    --blue-a7: #ffab2567;
+    --blue-a8: #ffae3587;
+    --blue-a9: #ffc53d;
+    --gray-1: #111110;
+    --gray-10: #7c7b74;
+    --gray-11: #b5b3ad;
+    --gray-12: #eeeeec;
+    --gray-2: #191918;
+    --gray-3: #222221;
+    --gray-4: #2a2a28;
+    --gray-5: #31312e;
+    --gray-6: #3b3a37;
+    --gray-7: #494844;
+    --gray-8: #62605b;
+    --gray-9: #6f6d66;
     --gray-a1: #00000000;
-    --gray-a10: #ffffff72;
-    --gray-a11: #ffffffaf;
-    --gray-a12: #ffffffed;
-    --gray-a2: #ffffff09;
-    --gray-a3: #ffffff12;
-    --gray-a4: #ffffff1b;
-    --gray-a5: #ffffff22;
-    --gray-a6: #ffffff2c;
-    --gray-a7: #ffffff3b;
-    --gray-a8: #ffffff55;
-    --gray-a9: #ffffff64;
+    --gray-a10: #fffdee73;
+    --gray-a11: #fffcf4b0;
+    --gray-a12: #fffffded;
+    --gray-a2: #f4f4f309;
+    --gray-a3: #f6f6f513;
+    --gray-a4: #fefef31b;
+    --gray-a5: #fbfbeb23;
+    --gray-a6: #fffaed2d;
+    --gray-a7: #fffbed3c;
+    --gray-a8: #fff9eb57;
+    --gray-a9: #fffae965;
     --green-1: #0e1512;
     --green-10: #33b074;
     --green-11: #3dd68c;
@@ -252,14 +259,14 @@ body {
     --red-a8: #ff5d61b0;
     --red-a9: #fe4e54e4;
 
-  --background: #111111;
+  --background: #111110;
   --foreground: var(--gray-12);
   --card: var(--gray-2);
   --card-foreground: var(--gray-12);
   --popover: var(--gray-2);
   --popover-foreground: var(--gray-12);
   --primary: var(--blue-9);
-  --primary-foreground: #ffffff;
+  --primary-foreground: #21201c;
   --secondary: var(--gray-4);
   --secondary-foreground: var(--gray-12);
   --muted: var(--gray-2);

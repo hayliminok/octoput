@@ -63,7 +63,7 @@ export function RootView() {
           className="h-full"
           storageKey="app-shell"
           sidebar={<AppSidebar />}
-          sidebarSize={{ default: 200, min: 170, max: 240 }}
+          sidebarSize={{ default: 270, min: 240, max: 360 }}
         >
           <Outlet />
         </SplitView>
