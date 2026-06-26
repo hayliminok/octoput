@@ -29,32 +29,36 @@ body {
 }
 
 /* ── Design tokens ────────────────────────────────────────────────────── */
-/* Radix color scales (gray/blue/red/green, solid + alpha) + shadcn tokens. */
+/* Radix color scales (gray/blue/red/green, solid + alpha) + shadcn tokens.
+   Accent scale: the `--blue-*` tokens now carry Radix *teal* values — a deep
+   ocean tone that suits the octopus branding. Names kept as `blue` so every
+   semantic token (--primary, --ring) and `blue-*` utility class recolors in one
+   place; swap these values to restyle the whole accent. */
 :root {
-    --blue-1: #fbfdff;
-    --blue-10: #0588f0;
-    --blue-11: #0d74ce;
-    --blue-12: #113264;
-    --blue-2: #f4faff;
-    --blue-3: #e6f4fe;
-    --blue-4: #d5efff;
-    --blue-5: #c2e5ff;
-    --blue-6: #acd8fc;
-    --blue-7: #8ec8f6;
-    --blue-8: #5eb1ef;
-    --blue-9: #0090ff;
-    --blue-a1: #0080ff04;
-    --blue-a10: #0086f0fa;
-    --blue-a11: #006dcbf2;
-    --blue-a12: #002359ee;
-    --blue-a2: #008cff0b;
-    --blue-a3: #008ff519;
-    --blue-a4: #009eff2a;
-    --blue-a5: #0093ff3d;
-    --blue-a6: #0088f653;
-    --blue-a7: #0083eb71;
-    --blue-a8: #0084e6a1;
-    --blue-a9: #0090ff;
+    --blue-1: #fafefd;
+    --blue-10: #0d9b8a;
+    --blue-11: #008573;
+    --blue-12: #0d3d38;
+    --blue-2: #f3fbf9;
+    --blue-3: #e0f8f3;
+    --blue-4: #ccf3ea;
+    --blue-5: #b8eae0;
+    --blue-6: #a1ded2;
+    --blue-7: #83cdc1;
+    --blue-8: #53b9ab;
+    --blue-9: #12a594;
+    --blue-a1: #00cc9905;
+    --blue-a10: #009684f2;
+    --blue-a11: #008573;
+    --blue-a12: #00332df2;
+    --blue-a2: #00aa800c;
+    --blue-a3: #00c69d1f;
+    --blue-a4: #00c39633;
+    --blue-a5: #00b49047;
+    --blue-a6: #00a6855e;
+    --blue-a7: #0099807c;
+    --blue-a8: #009783ac;
+    --blue-a9: #009e8ced;
     --gray-1: #fcfcfc;
     --gray-10: #838383;
     --gray-11: #646464;
@@ -151,30 +155,30 @@ body {
 }
 
 .dark {
-    --blue-1: #0d1520;
-    --blue-10: #3b9eff;
-    --blue-11: #70b8ff;
-    --blue-12: #c2e6ff;
-    --blue-2: #111927;
-    --blue-3: #0d2847;
-    --blue-4: #003362;
-    --blue-5: #004074;
-    --blue-6: #104d87;
-    --blue-7: #205d9e;
-    --blue-8: #2870bd;
-    --blue-9: #0090ff;
-    --blue-a1: #004df211;
-    --blue-a10: #3b9eff;
-    --blue-a11: #70b8ff;
-    --blue-a12: #c2e6ff;
-    --blue-a2: #1166fb18;
-    --blue-a3: #0077ff3a;
-    --blue-a4: #0075ff57;
-    --blue-a5: #0081fd6b;
-    --blue-a6: #0f89fd7f;
-    --blue-a7: #2a91fe98;
-    --blue-a8: #3094feb9;
-    --blue-a9: #0090ff;
+    --blue-1: #0d1514;
+    --blue-10: #0eb39e;
+    --blue-11: #0bd8b6;
+    --blue-12: #adf0dd;
+    --blue-2: #111c1b;
+    --blue-3: #0d2d2a;
+    --blue-4: #023b37;
+    --blue-5: #084843;
+    --blue-6: #145750;
+    --blue-7: #1c6961;
+    --blue-8: #207e73;
+    --blue-9: #12a594;
+    --blue-a1: #00deab05;
+    --blue-a10: #0dffe0ae;
+    --blue-a11: #0afed5d6;
+    --blue-a12: #b8ffebef;
+    --blue-a2: #12fbe60c;
+    --blue-a3: #00ffe61e;
+    --blue-a4: #00ffe92d;
+    --blue-a5: #00ffea3b;
+    --blue-a6: #1cffe84b;
+    --blue-a7: #2efde85f;
+    --blue-a8: #32ffe775;
+    --blue-a9: #13ffe49f;
     --gray-1: #111111;
     --gray-10: #7b7b7b;
     --gray-11: #b4b4b4;

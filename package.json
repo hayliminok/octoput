@@ -1,7 +1,7 @@
 {
   "id": "gb0urk0c",
   "name": "octoput",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "productName": "octoput",
   "description": "Stream and chill, all in one place",
   "iconDescription": "A torrent search engine that allows users to discover, browse, and find torrent files across the internet. The app indexes torrent metadata and provides search capabilities to locate content by title, category, and seeders. Think of a magnifying glass over a network, a search icon with interconnected nodes, or a radar dish scanning for files.",
