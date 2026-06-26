@@ -57,8 +57,8 @@ export function ConnectView() {
   return (
     <div className="flex h-full items-center justify-center p-8">
       <div className="flex max-w-md flex-col items-center gap-6 text-center">
-        <div className="flex size-16 items-center justify-center rounded-2xl bg-blue-9 shadow-lg">
-          <Cloud className="size-8 text-white" />
+        <div className="flex size-16 items-center justify-center rounded-2xl bg-blue-9 shadow-lg dark:shadow-none">
+          <Cloud className="size-8 text-primary-foreground" />
         </div>
 
         <div className="flex flex-col gap-2">

@@ -5,19 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>App</title>
     <script>
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        document.documentElement.classList.add("dark");
-      }
+      // Octoput is dark-only. Apply the dark class immediately so there's no
+      // light flash before the stylesheet/React mount.
+      document.documentElement.classList.add("dark");
     </script>
     <style>
       :root {
-        --background: hsl(0 0% 100% / 0.9);
+        color-scheme: dark;
       }
-      .dark {
-        --background: hsl(0 0% 0% / 0.4);
-      }
+      html,
       body {
-        background: var(--background);
+        /* Transparent so the native macOS vibrancy material shows through. */
+        background: transparent;
       }
     </style>
   </head>

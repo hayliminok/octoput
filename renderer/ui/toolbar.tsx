@@ -1,7 +1,11 @@
 import * as React from "react";
 import { cn } from "./utils";
 
-/** Header bar pinned at the top of a pane. Multiple `ToolbarRow`s stack. */
+/**
+ * Unified macOS toolbar pinned at the top of a pane. A window-drag region with
+ * the standard inset title-bar height; interactive children opt out of drag via
+ * the global `.drag-region` rule. Multiple `ToolbarRow`s stack.
+ */
 export function Toolbar({
   className,
   children,
@@ -10,7 +14,13 @@ export function Toolbar({
   children?: React.ReactNode;
 }) {
   return (
-    <div data-toolbar="" className={cn("flex flex-col gap-2 px-4 py-3", className)}>
+    <div
+      data-toolbar=""
+      className={cn(
+        "drag-region flex flex-col justify-center gap-1 px-4 [min-height:var(--titlebar)]",
+        className,
+      )}
+    >
       {children}
     </div>
   );
@@ -33,7 +43,11 @@ export function ToolbarContent({
   className?: string;
   children?: React.ReactNode;
 }) {
-  return <div className={cn("flex min-w-0 flex-1 flex-col gap-0.5", className)}>{children}</div>;
+  return (
+    <div className={cn("flex min-w-0 flex-1 flex-col justify-center gap-0.5", className)}>
+      {children}
+    </div>
+  );
 }
 
 export function ToolbarTitle({
@@ -43,7 +57,11 @@ export function ToolbarTitle({
   className?: string;
   children?: React.ReactNode;
 }) {
-  return <h1 className={cn("truncate text-title2", className)}>{children}</h1>;
+  return (
+    <h1 className={cn("truncate text-[0.9375rem] font-semibold tracking-tight", className)}>
+      {children}
+    </h1>
+  );
 }
 
 export function ToolbarDescription({

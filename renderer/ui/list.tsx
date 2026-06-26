@@ -91,8 +91,9 @@ function Item<T>({ item, className, children }: ListItemProps<T>) {
       aria-selected={selected}
       onClick={() => onSelect(item)}
       className={cn(
-        "flex w-full items-center gap-3 rounded-lg px-2 py-2.5 text-left transition-colors",
-        selected ? "bg-blue-a3" : "hover:bg-gray-a2 active:bg-gray-a4",
+        "flex w-full items-center gap-2.5 rounded-md px-2 py-1.5 text-left outline-none",
+        "focus-visible:ring-2 focus-visible:ring-blue-a7",
+        selected ? "bg-blue-a4 text-gray-12" : "hover:bg-gray-a3 active:bg-gray-a4",
         className,
       )}
     >
@@ -118,7 +119,7 @@ function ItemTitle({
   className?: string;
   children?: React.ReactNode;
 }) {
-  return <div className={cn("truncate text-body", className)}>{children}</div>;
+  return <div className={cn("truncate text-[0.8125rem]", className)}>{children}</div>;
 }
 
 function ItemDescription({

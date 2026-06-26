@@ -11,14 +11,17 @@ await Promise.all([
     format: "cjs", target: "node20", outfile: "build/preload.cjs", external: ["electron"] }),
 ]);
 
-const vite = spawn("npx", ["vite", "--port", "5173", "--strictPort"], { stdio: "inherit", shell: true });
+const vite = spawn("npx", ["vite", "--port", "5273", "--strictPort"], { stdio: "inherit", shell: true });
 
 let electron;
 const die = () => { vite.kill(); electron?.kill(); process.exit(); };
 vite.on("exit", die);
 process.on("SIGINT", die);
 
-await waitOn({ resources: ["http-get://localhost:5173"], timeout: 30000 });
+// Wait for the dev server's TCP port to accept connections. (Don't HTTP-GET `/`
+// — Vite serves the app at /main-window.html and 404s on root, which never
+// satisfies an http-get wait.)
+await waitOn({ resources: ["tcp:localhost:5273"], timeout: 30000 });
 
 electron = spawn("npx", ["electron", "."], {
   stdio: "inherit", shell: true,

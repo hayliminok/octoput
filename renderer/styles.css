@@ -19,18 +19,46 @@ body,
   height: 100%;
 }
 
+/* Isolate the app root so portalled overlays (dialogs, menus, toasts) never
+   collide with in-app z-index stacking. */
+#root {
+  isolation: isolate;
+}
+
 /* Radix Themes scaling="110%": scale the rem-based UI up 10% from the 16px root. */
 html {
   font-size: 110%;
 }
 
-/* Base theme colors. Without an explicit color, text fell back to default black,
-   which is invisible on the dark background. Applies to both app + settings windows. */
+/* Base theme colors. The window background is left transparent so the native
+   macOS "sidebar" vibrancy material (set on the BrowserWindow) shows through the
+   source list; content panes paint an opaque --background on top. The system
+   font stack resolves to San Francisco on macOS for a native feel. */
 body {
-  background-color: var(--background);
+  background-color: transparent;
   color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", "Helvetica Neue",
+    system-ui, sans-serif;
+  font-feature-settings: "case", "ss01";
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* Height of the unified title bar / toolbar region that clears the inset
+   traffic lights. Used to top-pad the sidebar and size toolbars. Physical px so
+   it stays aligned with the (unscaled) native traffic lights. */
+:root {
+  --titlebar: 52px;
+}
+
+/* macOS window dragging. `titleBarStyle: "hiddenInset"` hides the bar but keeps
+   the controls, so the app must declare which regions drag the window. Toolbars
+   and the sidebar top are draggable; interactive children opt back out. */
+.drag-region {
+  -webkit-app-region: drag;
+}
+.drag-region :is(button, a, input, select, textarea, [role="button"], [role="slider"], [data-nav-item]) {
+  -webkit-app-region: no-drag;
 }
 
 /* ── Design tokens ────────────────────────────────────────────────────── */

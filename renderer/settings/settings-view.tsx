@@ -1,15 +1,8 @@
-import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import {
   AlertDialog,
   Button,
-  Label,
-  RadioGroup,
-  RadioGroupItem,
   ScrollArea,
-  Toolbar,
-  ToolbarContent,
-  ToolbarTitle,
   Field,
   FieldContent,
   FieldGroup,
@@ -17,8 +10,6 @@ import {
   FieldSet,
   toast,
 } from "@ui";
-import { useTheme } from "@ui";
-import type { NativeThemeInfo } from "@platform/ipc-types";
 
 const invoke = window.glazeAPI.glaze.ipc.invoke;
 const openExternal = window.glazeAPI.shell.openExternal;
@@ -93,26 +84,6 @@ function JackettPanel() {
 }
 
 export function SettingsView() {
-  // Keep the theme class in sync (Settings can be the first view a window paints).
-  useTheme();
-  const [themeInfo, setThemeInfo] = useState<NativeThemeInfo | null>(null);
-  const [_isLoading, setIsLoading] = useState(true);
-
-  const refreshThemeInfo = async () => {
-    try {
-      const info = await window.glazeAPI.nativeTheme.getInfo();
-      setThemeInfo(info);
-    } catch (error) {
-      toast.error(`Failed to get theme info: ${error}`);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    refreshThemeInfo();
-  }, []);
-
   const handleLogout = async () => {
     try {
       await window.glazeAPI.glaze.ipc.invoke("auth:logout");
@@ -124,55 +95,9 @@ export function SettingsView() {
     }
   };
 
-  const handleThemeChange = async (value: string) => {
-    const source = value as "system" | "light" | "dark";
-    try {
-      await window.glazeAPI.nativeTheme.setThemeSource(source);
-      await refreshThemeInfo();
-    } catch (error) {
-      toast.error(`Failed to set theme: ${error}`);
-    }
-  };
-
   return (
-    <ScrollArea
-      toolbar={
-        <Toolbar>
-          <ToolbarContent>
-            <ToolbarTitle>Settings</ToolbarTitle>
-          </ToolbarContent>
-        </Toolbar>
-      }
-    >
-      <div className="px-4 flex flex-col gap-8 mb-8">
-        <FieldSet>
-          <FieldGroup>
-            <Field orientation="horizontal">
-              <FieldContent>
-                <FieldLabel htmlFor="theme">Theme</FieldLabel>
-              </FieldContent>
-              <RadioGroup
-                value={themeInfo?.themeSource ?? "system"}
-                onValueChange={handleThemeChange}
-                orientation="horizontal"
-              >
-                <Label>
-                  <RadioGroupItem value="system" />
-                  Auto
-                </Label>
-                <Label>
-                  <RadioGroupItem value="light" />
-                  Light
-                </Label>
-                <Label>
-                  <RadioGroupItem value="dark" />
-                  Dark
-                </Label>
-              </RadioGroup>
-            </Field>
-          </FieldGroup>
-        </FieldSet>
-
+    <ScrollArea title="Settings">
+      <div className="flex flex-col gap-8 px-4 pt-6 mb-8">
         <FieldSet>
           <FieldGroup>
             <Field>

@@ -162,7 +162,7 @@ function NavBar({ backLabel, onBack }: { backLabel?: string; onBack?: () => void
 function Leading({ file }: { file: PutioFile }) {
   const [failed, setFailed] = React.useState(false);
   const kind = fileKind(file);
-  if (kind === "folder") return <FolderGlyph className="size-7 shrink-0 text-blue-9" />;
+  if (kind === "folder") return <FolderGlyph className="size-5 shrink-0 text-blue-11" />;
 
   // Videos: prefer the put.io thumbnail; fall back to the film icon.
   if (kind === "video" && file.thumbnail && !failed) {
@@ -171,12 +171,12 @@ function Leading({ file }: { file: PutioFile }) {
         src={file.thumbnail}
         alt=""
         onError={() => setFailed(true)}
-        className="size-10 shrink-0 rounded-md object-cover"
+        className="h-8 w-[3.25rem] shrink-0 rounded object-cover"
       />
     );
   }
 
-  const cls = "size-6 shrink-0";
+  const cls = "size-5 shrink-0";
   switch (kind) {
     case "video":
       return <Film className={cn(cls, "text-gray-11")} />;
@@ -219,7 +219,7 @@ function FileRows({
   onDelete: (item: PutioFile) => void;
 }) {
   return (
-    <div className="mx-3 mb-6 divide-y divide-gray-a3 overflow-hidden rounded-xl bg-gray-2">
+    <div className="flex flex-col gap-px px-2 pb-4">
       {items.map((file) => {
         const selected = !file.isFolder && file.id === selectedId;
         const kind = fileKind(file);
@@ -230,15 +230,15 @@ function FileRows({
                 data-nav-item=""
                 onClick={() => onOpen(file)}
                 className={
-                  "flex w-full items-center gap-3 px-3.5 py-2.5 text-left outline-none transition-colors focus:bg-blue-a3 " +
-                  (selected ? "bg-blue-a3" : "hover:bg-gray-a2 active:bg-gray-a4")
+                  "flex w-full items-center gap-2.5 rounded-md px-2 py-1 text-left outline-none focus-visible:ring-2 focus-visible:ring-blue-a7 " +
+                  (selected ? "bg-blue-a4 text-gray-12" : "hover:bg-gray-a3 active:bg-gray-a4")
                 }
               >
                 <Leading file={file} />
                 <div className="min-w-0 flex-1">
-                  <div className="truncate text-body">{file.name}</div>
+                  <div className="truncate text-[0.8125rem]">{file.name}</div>
                   {!file.isFolder && (
-                    <div className="text-footnote text-gray-a10 tabular-nums">
+                    <div className="text-[0.6875rem] text-gray-a10 tabular-nums">
                       {formatBytes(file.size)}
                     </div>
                   )}
@@ -246,7 +246,7 @@ function FileRows({
                 {file.isFolder ? (
                   <ChevronRight className="size-4 shrink-0 text-gray-a8" />
                 ) : kind === "video" || kind === "audio" ? (
-                  <Play className="size-4 shrink-0 text-gray-a8" />
+                  <Play className="size-3.5 shrink-0 text-gray-a8" />
                 ) : null}
               </button>
             </ContextMenuTrigger>
@@ -268,11 +268,11 @@ function FileRows({
 
 function RowsSkeleton() {
   return (
-    <div className="mx-3 divide-y divide-gray-a3 overflow-hidden rounded-xl bg-gray-2">
-      {Array.from({ length: 8 }).map((_, i) => (
-        <div key={i} className="flex items-center gap-3 px-4 py-3">
-          <div className="size-8 shrink-0 rounded-md bg-gray-a3 animate-pulse" />
-          <div className="h-3.5 w-1/2 rounded bg-gray-a3 animate-pulse" />
+    <div className="flex flex-col gap-px px-2">
+      {Array.from({ length: 10 }).map((_, i) => (
+        <div key={i} className="flex items-center gap-2.5 px-2 py-1.5">
+          <div className="size-5 shrink-0 rounded bg-gray-a3 animate-pulse" />
+          <div className="h-3 w-1/2 rounded bg-gray-a3 animate-pulse" />
         </div>
       ))}
     </div>
@@ -368,7 +368,7 @@ function BrowserPane({
     <ScrollArea scrollbars="vertical" toolbar={<NavBar backLabel={backLabel} onBack={onBack} />}>
       <div key={`browse-${depth}`} className={dir === "push" ? "ios-push" : "ios-pop"}>
         <div className="flex items-center justify-between gap-2 px-4 pb-2 pt-1">
-          <h1 className="min-w-0 truncate text-largeTitleEmphasized">{title}</h1>
+          <h1 className="min-w-0 truncate text-[1.0625rem] font-semibold tracking-tight">{title}</h1>
           <button
             onClick={onRefresh}
             disabled={refreshing}
@@ -681,7 +681,7 @@ function PlayerPane({ file }: { file: PutioFile }) {
         <div className="p-4">
           <div
             className={cn(
-              "relative aspect-video w-full overflow-hidden rounded-xl bg-gray-a3 shadow-lg",
+              "relative aspect-video w-full overflow-hidden rounded-xl bg-gray-a3 shadow-lg dark:shadow-none",
               !file.screenshot && "animate-pulse",
             )}
           >
@@ -740,7 +740,7 @@ function PlayerPane({ file }: { file: PutioFile }) {
       <div className="p-4">
         <div
           ref={containerRef}
-          className="group relative w-full overflow-hidden rounded-xl bg-black shadow-lg"
+          className="group relative w-full overflow-hidden rounded-xl bg-black shadow-lg dark:shadow-none"
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
         >
@@ -950,7 +950,7 @@ function ImagePane({ file }: { file: PutioFile }) {
           <img
             src={data.fallback}
             alt={file.name}
-            className="max-h-[78vh] w-auto rounded-lg object-contain shadow-lg"
+            className="max-h-[78vh] w-auto rounded-lg object-contain shadow-lg dark:shadow-none"
           />
         )}
       </div>
@@ -1257,7 +1257,7 @@ function MoveDialog({
                 onClick={() => setPickPath([...pickPath, { id: f.id, name: f.name }])}
                 className="flex w-full items-center gap-2 px-3 py-2 text-left transition-colors hover:bg-gray-a2"
               >
-                <FolderGlyph className="size-5 shrink-0 text-blue-9" />
+                <FolderGlyph className="size-5 shrink-0 text-blue-11" />
                 <span className="min-w-0 flex-1 truncate text-body">{f.name}</span>
                 <ChevronRight className="size-4 shrink-0 text-gray-a8" />
               </button>

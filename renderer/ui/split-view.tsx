@@ -100,7 +100,7 @@ export function SplitView({
       >
         <div className="absolute inset-y-0 -left-1 -right-1 transition-colors group-hover:bg-blue-a4" />
       </div>
-      <div className="relative h-full min-w-0 flex-1 overflow-hidden">{children}</div>
+      <div className="relative h-full min-w-0 flex-1 overflow-hidden bg-background">{children}</div>
     </div>
   );
 }

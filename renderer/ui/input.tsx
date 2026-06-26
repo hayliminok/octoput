@@ -10,8 +10,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         ref={ref}
         type={type}
         className={cn(
-          "flex h-9 w-full rounded-lg border border-input bg-gray-2 px-3 py-1 text-body text-foreground transition-colors",
-          "placeholder:text-gray-a10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+          "flex h-7 w-full rounded-md border border-gray-a6 bg-card px-2.5 text-[0.8125rem] text-foreground shadow-sm transition-colors dark:shadow-none",
+          "placeholder:text-gray-a10 focus-visible:border-blue-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-a6",
           "disabled:cursor-not-allowed disabled:opacity-50",
           "[&::-webkit-search-cancel-button]:appearance-none",
           className,

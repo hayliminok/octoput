@@ -160,7 +160,7 @@ function FolderPicker({ value, onChange }: { value: PathItem[]; onChange: (p: Pa
               onClick={() => onChange([...value, { id: f.id, name: f.name }])}
               className="flex w-full items-center gap-2 px-3 py-2 text-left transition-colors hover:bg-gray-a2"
             >
-              <FolderOpen className="size-4 shrink-0 text-blue-9" />
+              <FolderOpen className="size-4 shrink-0 text-blue-11" />
               <span className="min-w-0 flex-1 truncate text-body">{f.name}</span>
               <ChevronRight className="size-4 shrink-0 text-gray-a8" />
             </button>
@@ -536,7 +536,7 @@ export function NewTransferView() {
             <div className="text-callout text-gray-a10">Loading…</div>
           ) : !pickerOpen ? (
             <div className="flex items-center gap-2 rounded-lg border border-gray-a4 px-3 py-2">
-              <FolderOpen className="size-4 shrink-0 text-blue-9" />
+              <FolderOpen className="size-4 shrink-0 text-blue-11" />
               <span className="min-w-0 flex-1 truncate text-body">{dest.name}</span>
               <button
                 onClick={() => {
@@ -570,7 +570,7 @@ export function NewTransferView() {
             onChange={(e) => setLinks(e.target.value)}
             rows={4}
             placeholder="Paste magnet links or URLs, one per line"
-            className="w-full resize-y rounded-lg border border-input bg-transparent p-3 text-body outline-none placeholder:text-gray-a8 focus-visible:ring-2 focus-visible:ring-ring"
+            className="w-full resize-y rounded-md border border-gray-a6 bg-card p-2.5 text-[0.8125rem] shadow-sm outline-none transition-colors placeholder:text-gray-a10 focus-visible:border-blue-8 focus-visible:ring-2 focus-visible:ring-blue-a6 dark:shadow-none"
           />
           <div className="flex justify-end">
             <Button onClick={addLinks} disabled={adding || !links.trim()}>
@@ -593,7 +593,7 @@ export function NewTransferView() {
             }}
           />
           <div className="flex items-center gap-2 rounded-lg border border-gray-a4 px-3 py-2">
-            <FileUp className="size-4 shrink-0 text-blue-9" />
+            <FileUp className="size-4 shrink-0 text-blue-11" />
             <span className="min-w-0 flex-1 truncate text-callout text-gray-a11">
               Add a .torrent file from your computer to put.io
             </span>

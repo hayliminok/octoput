@@ -5,7 +5,9 @@ import { app } from "electron";
 const currentDirPath = path.dirname(fileURLToPath(import.meta.url));
 const BUILD_ROOT = path.resolve(currentDirPath, "..");
 
-const DEV_SERVER = "http://localhost:5173";
+// Port 5273 (not Vite's default 5173) so octoput's dev server doesn't collide
+// with other Vite projects running on 5173.
+const DEV_SERVER = "http://localhost:5273";
 
 export function getBuildRoot(): string {
   return BUILD_ROOT;

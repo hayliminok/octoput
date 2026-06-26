@@ -1,6 +1,6 @@
 import { useNavigate, useRouterState } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { Sidebar, SidebarList, SidebarListItem } from "@ui";
+import { Sidebar, SidebarSection, SidebarList, SidebarListItem } from "@ui";
 import { ArrowDownToLine, Download, FolderOpen, Plus, Settings } from "lucide-react";
 import putioLogo from "../assets/putio-logo.svg";
 import putioLogoDark from "../assets/putio-logo-dark.svg";
@@ -54,15 +54,16 @@ export function AppSidebar() {
       <img
         src={putioLogo}
         alt="put.io"
-        className="mb-3 ml-1.5 mt-[3px] h-6 w-auto self-start dark:hidden"
+        className="mb-1 ml-1 h-6 w-auto self-start dark:hidden"
       />
       <img
         src={putioLogoDark}
         alt="put.io"
-        className="mb-3 ml-1.5 mt-[3px] hidden h-6 w-auto self-start dark:block"
+        className="mb-1 ml-1 hidden h-6 w-auto self-start dark:block"
       />
 
       <div data-nav-pane="sidebar">
+        <SidebarSection>Library</SidebarSection>
         <SidebarList>
           <SidebarListItem
             icon={<Plus className="size-4" />}
@@ -83,7 +84,7 @@ export function AppSidebar() {
             onClick={() => navigate({ to: "/transfers" })}
             trailing={
               activeCount > 0 ? (
-                <span className="rounded-full bg-blue-9 px-1.5 py-0.5 text-[11px] font-medium tabular-nums text-white">
+                <span className="rounded-full bg-blue-9 px-1.5 py-0.5 text-[0.6875rem] font-semibold tabular-nums text-primary-foreground">
                   {activeCount}
                 </span>
               ) : undefined

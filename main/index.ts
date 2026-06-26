@@ -75,6 +75,21 @@ async function createMainWindow() {
     minHeight: minWindowHeight,
     title: windowTitle,
     show: false, // Don't show until WebView is ready (prevents flickering)
+    // ── Native macOS chrome ──────────────────────────────────────────────
+    // Inset traffic lights + a unified toolbar (the title bar is hidden but the
+    // window controls stay), and a translucent "sidebar" vibrancy material
+    // behind the source list. A transparent backgroundColor lets the material
+    // show through wherever the renderer paints a transparent surface (the
+    // sidebar); content panes paint an opaque --background over it.
+    titleBarStyle: "hiddenInset",
+    trafficLightPosition: { x: 18, y: 18 },
+    // "hud" is the dark-glass material: more translucent than "under-window"
+    // while staying dark — a deep, glassy source list.
+    vibrancy: "hud",
+    // Always render the material in its "inactive" (darker) appearance, instead
+    // of brightening when the window gains focus.
+    visualEffectState: "inactive",
+    backgroundColor: "#00000000",
     webPreferences: {
       preload: getPreloadPath(),
     },

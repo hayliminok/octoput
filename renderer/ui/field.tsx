@@ -21,7 +21,12 @@ export function FieldGroup({
   children?: React.ReactNode;
 }) {
   return (
-    <div className={cn("flex flex-col divide-y divide-border rounded-xl bg-gray-2", className)}>
+    <div
+      className={cn(
+        "flex flex-col divide-y divide-gray-a3 rounded-xl bg-card ring-1 ring-gray-a4",
+        className,
+      )}
+    >
       {children}
     </div>
   );

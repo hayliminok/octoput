@@ -44,8 +44,12 @@ export const ScrollArea = React.forwardRef<HTMLDivElement, ScrollAreaProps>(
     const header =
       toolbar ??
       (title || actions ? (
-        <div className="flex items-center justify-between gap-3 px-4 py-3">
-          {title ? <h1 className="min-w-0 truncate text-title1">{title}</h1> : <span />}
+        <div className="flex items-center justify-between gap-3 px-4 [min-height:var(--titlebar)]">
+          {title ? (
+            <h1 className="min-w-0 truncate text-[0.9375rem] font-semibold tracking-tight">{title}</h1>
+          ) : (
+            <span />
+          )}
           {actions ? <div className="flex shrink-0 items-center gap-2">{actions}</div> : null}
         </div>
       ) : null);

@@ -42,7 +42,13 @@ export { Toaster, toast } from "./toast";
 export { SplitView, type SplitViewProps } from "./split-view";
 export { Status, type StatusProps } from "./status";
 export { EmptyState, type EmptyStateProps } from "./empty-state";
-export { Sidebar, SidebarList, SidebarListItem, type SidebarListItemProps } from "./sidebar";
+export {
+  Sidebar,
+  SidebarSection,
+  SidebarList,
+  SidebarListItem,
+  type SidebarListItemProps,
+} from "./sidebar";
 export {
   Toolbar,
   ToolbarRow,
